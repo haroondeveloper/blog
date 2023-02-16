@@ -7,19 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Role extends Model
+class Permission extends Model
 {
+
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = ['name', 'slug', 'id'];
 
-    public function users()
+    public function roles()
     {
-        return $this->hasMany(User::class);
-    }
-
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class);
+        return $this->belongsToMany(Role::class);
     }
 }

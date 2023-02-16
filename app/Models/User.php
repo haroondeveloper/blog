@@ -30,4 +30,9 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
