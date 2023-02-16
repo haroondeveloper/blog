@@ -16,13 +16,13 @@ class RegistrationController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        User::create([
+       $user =  User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        auth()->attempt($request->only('email', 'password'));
+        auth()->login($user);
 
         return redirect()->route('home');
     }
