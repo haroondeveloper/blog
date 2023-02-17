@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\RolesController;
-use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +29,12 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 //customers
-Route::resource('customers', CustomersController::class)->middleware(['auth']);
+Route::resource('customers', CustomerController::class)->middleware(['auth']);
 
 //roles
-Route::resource('/roles', RolesController::class)->middleware('auth');
+Route::resource('roles', RolesController::class)->middleware('auth');
 
 //permession
-Route::resource('/permissions', PermissionsController::class)->middleware('auth');
+Route::resource('permissions', PermissionsController::class)->middleware('auth');
 
 Auth::routes();

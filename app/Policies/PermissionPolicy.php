@@ -11,10 +11,10 @@ class PermissionPolicy
     use HandlesAuthorization;
 
 
+
     public function viewAny(User $user)
     {
-        // Check if the user is an admin
-        return $user->role->name === 'admin';
+        return $user->hasRole('admin');
     }
 
 

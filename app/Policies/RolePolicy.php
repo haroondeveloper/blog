@@ -12,26 +12,26 @@ class RolePolicy
 
     public function viewAny(User $user)
     {
-        return $user->hasPermission('view_roles');
+        return $user->hasRole('view_roles');
     }
 
     public function view(User $user, Role $role)
     {
-        return $user->hasPermission('view_roles') && $user->role_id === $role->id;
+        return $user->hasRole('view_roles') && $user->role_id === $role->id;
     }
 
     public function create(User $user)
     {
-        return $user->hasPermission('create_roles');
+        return $user->hasRole('create_roles');
     }
 
     public function update(User $user, Role $role)
     {
-        return $user->hasPermission('update_roles') && $user->role_id === $role->id;
+        return $user->hasRole('update_roles') && $user->role_id === $role->id;
     }
 
     public function delete(User $user, Role $role)
     {
-        return $user->hasPermission('delete_roles') && $user->role_id === $role->id;
+        return $user->hasRole('delete_roles') && $user->role_id === $role->id;
     }
 }
