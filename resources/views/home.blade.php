@@ -18,6 +18,8 @@
 
                         <p><a href="{{ route('roles.create') }}">Create new role</a></p>
                         <p><a href="{{ route('permissions.create') }}">Create new permission</a></p>
+                            <p><a href="{{ route('customers.create') }}">Create new customer</a></p>
+
                     </div>
                 </div>
             </div>
