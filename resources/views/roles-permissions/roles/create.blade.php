@@ -34,7 +34,7 @@
 
                             <div class="form-group">
                                 <label for="permissions">Permissions</label>
-                                <select multiple class="form-control" id="permissions" name="permissions[]">
+                                <select multiple class=" select form-control" id="permissions" name="permissions[]">
                                     @if(!$permissions->isEmpty())
                                         @foreach ($permissions as $permission)
                                             <option value="{{ $permission->id }}" {{ isset($role) && $role->permissions->contains($permission->id) ? 'selected' : '' }}>{{ $permission->name }}</option>

@@ -19,19 +19,5 @@ class BaseController extends Controller
         }
     }
 
-    public function successResponse($data, $status = 200)
-    {
-        return response()->json([
-            'status' => 'success',
-            'data' => $data
-        ], $status);
-    }
 
-    public function errorResponse($message, $status = 400)
-    {
-        return response()->json([
-            'status' => 'error',
-            'message' => $message
-        ], $status);
-    }
 }

@@ -13,8 +13,7 @@ class RolesController extends BaseController
     public function index()
     {
         $roles = Role::all();
-
-        return view('roles-permissions.roles.index', compact('roles'));
+        return view('roles-permissions.roles.index', get_defined_vars());
     }
 
     public function create()
@@ -45,7 +44,7 @@ class RolesController extends BaseController
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
 
-        return view('roles-permissions.roles.create', compact('role', 'permissions'));
+        return view('roles-permissions.roles.create',get_defined_vars());
     }
 
     public function update(UpdateRoleRequest $request, $id)
@@ -55,7 +54,6 @@ class RolesController extends BaseController
         $role->description = $request->input('description');
         $role->save();
 
-        // Attach the selected permissions to the role
         $permissions = $request->input('permissions');
         if ($permissions) {
             $role->permissions()->sync($permissions);
@@ -70,9 +68,9 @@ class RolesController extends BaseController
     public function destroy($id)
     {
         $role = Role::findOrFail($id);
-
         $role->delete();
 
-        return redirect()->route('roles.index')->with('success', 'Role deleted successfully.');
+        return redirect()->route('roles.index')
+            ->with('success', 'Role deleted successfully.');
     }
 }
