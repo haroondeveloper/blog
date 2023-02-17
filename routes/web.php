@@ -26,15 +26,12 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::resource('customers', CustomerController::class);
+    Route::resource('roles', RolesController::class);
+    Route::resource('permissions', PermissionsController::class);
+});
 
-//customers
-Route::resource('customers', CustomerController::class)->middleware(['auth']);
-
-//roles
-Route::resource('roles', RolesController::class)->middleware('auth');
-
-//permession
-Route::resource('permissions', PermissionsController::class)->middleware('auth');
 
 Auth::routes();
